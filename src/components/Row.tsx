@@ -1,13 +1,15 @@
 import Box from "./Box";
 
-function Row() {
+interface props {
+    word: string;
+}
+
+function Row(props: props) {
     return (
         <div className="row">  
-            <Box letter="s"/>
-            <Box letter="i"/>
-            <Box letter="g"/>
-            <Box letter="m"/>
-            <Box />
+            {Array.from({ length: 5 }).map((_, index) => (
+                <Box key={index} letter={props.word[index] || ""} />
+            ))}
         </div>
     )
 }

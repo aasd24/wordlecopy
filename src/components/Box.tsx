@@ -1,10 +1,10 @@
 interface props {
-    letter?: string
+    letter: string
 }
 
 function Box(props: props) {
     return (
-        <div className="box">{props.letter || "a"}</div>
+        <div className="box">{props.letter}</div>
     )
 }
 
