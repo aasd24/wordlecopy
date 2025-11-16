@@ -26,7 +26,6 @@ function Container() {
     useKeyPress("Enter", () => {
         if ((currentRow === 5) || (word === "apple")) {
             setFinished(true);
-            return;
         }
 
         if (word.length === 5) {
@@ -49,8 +48,9 @@ function Container() {
                 {Array.from({ length: 6 }).map((_, index) => (
                     <Row 
                         key={index} 
-                        word={words[index] || (index === currentRow ? word : "")} 
-                        shouldScale={index <= currentRow}
+                        word={words[index] || (index === currentRow ? word : "")}
+                        shouldScale={finished ? (index <= currentRow - 1) : (index <= currentRow)}
+                        shouldShowColor={index < currentRow}
                     />
                 ))}
             </div>
