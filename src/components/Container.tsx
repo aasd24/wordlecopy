@@ -26,6 +26,7 @@ function Container() {
     useKeyPress("Enter", () => {
         if ((currentRow === 5) || (word === "apple")) {
             setFinished(true);
+            return;
         }
 
         if (word.length === 5) {
@@ -46,7 +47,11 @@ function Container() {
         <>
             <div className="boxContainer">
                 {Array.from({ length: 6 }).map((_, index) => (
-                    <Row key={index} word={words[index] || (index === currentRow ? word : "")} />
+                    <Row 
+                        key={index} 
+                        word={words[index] || (index === currentRow ? word : "")} 
+                        shouldScale={index <= currentRow}
+                    />
                 ))}
             </div>
         </>
